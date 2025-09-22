@@ -1,0 +1,202 @@
+
+      :root {
+        --q-primary: #00BFFF;   /* สีวงล้อ 1 */
+        --q-positive: #00FF00;  /* สีวงล้อ 2 */
+        --q-negative: #FF0000;  /* สีวงล้อ 3 */
+        --q-warning: #FFFF00;   /* สีวงล้อ 4 */
+      }
+
+      /* =========================
+        พื้นฐาน HTML และ BODY
+        - margin/padding = 0 เพื่อให้ container เต็มหน้าจอ
+        - flex center container
+        - background เปลี่ยนสีได้
+        - แก้ font-size จะกระทบทุกตัวอักษรภายใน
+        ========================= */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 20px; /* แก้ค่าใหญ่ขึ้น -> ตัวหนังสือทุกส่วนใหญ่ขึ้น */
+        box-sizing: border-box;
+        background: #f5f6fa; /* เปลี่ยนสีพื้นหลัง */
+        display: flex;
+        justify-content: center; /* กึ่งกลางแนวนอน */
+        align-items: flex-start; /* เริ่มจากบน */
+      }
+
+      /* =========================
+        Container หลัก
+        - max-width ปรับขนาด PC
+        - padding ปรับระยะขอบ
+        - flex-direction: column จัดวางบนลงล่าง
+        - align-items: center กึ่งกลางแนวนอนทุก child
+        ========================= */
+      .container {
+        width: 95vw;           /* ปรับเต็มหน้าจอ mobile */
+        max-width: 1200px;     /* ปรับเต็มขนาดบน PC */
+        min-height: 95vh;
+        padding: 2vw;          /* ระยะขอบภายใน */
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.1);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        overflow-y: auto;
+      }
+
+      /* =========================
+        Logo
+        - display:block + margin auto -> กึ่งกลาง
+        - max-width: ปรับขนาด logo
+        - ถ้าแก้ max-width -> logo เล็ก/ใหญ่
+        ========================= */
+      .container img {
+        display: block;
+        margin: 0 auto 2vh;
+        max-width: 10vw;
+      }
+
+      /* =========================
+        Title (H2)
+        - text-align:center -> กึ่งกลาง
+        - margin-bottom -> ระยะจากฟอร์ม
+        - font-size -> ถ้าแก้ใหญ่/เล็ก จะกระทบ H2
+        ========================= */
+      .container h2 {
+        text-align: center;
+        margin: 0 0 2vh 0;
+        font-size: 2.0rem;
+      }
+
+      /* =========================
+        Label ฟอร์ม
+        - flex align-items:center -> checkbox/radio อยู่ตรงกลาง label
+        - margin-top -> เว้นระยะจาก input ก่อนหน้า
+        - font-size -> ถ้าแก้จะใหญ่/เล็กตาม label
+        ========================= */
+      label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 1vh;
+        font-weight: normal;
+        font-size: 1rem;
+        width: 100%;
+      }
+
+      /* =========================
+        Input / Select / Button
+        - width:100% -> เต็ม container
+        - padding -> ระยะภายใน
+        - font-size -> ปรับตัวหนังสือใน input
+        ========================= */
+      input, select, button {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0.5vh;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+
+      button {
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #2980b9;
+      }
+
+      /* =========================
+        ข้อความ thankyou
+        - text-align: center
+        - font-size -> ถ้าแก้ใหญ่/เล็ก จะกระทบตัวอักษร
+        ========================= */
+      .thankyou {
+        text-align: center;
+        margin-top: 2vh;
+        font-size: 1.2rem;
+      }
+
+      /* =========================
+        Radio แบบ checkbox
+        - input[type=radio] ซ่อน
+        - span::before แสดง ☑/☐
+        - font-size -> ถ้าแก้ใหญ่/เล็ก checkbox เปลี่ยนขนาด
+        ========================= */
+      input[type="radio"] { display: none; }
+      label span::before { content: "☐"; font-size: 1.5rem; margin-right: 0.5rem; }
+      input[type="radio"]:checked + span::before { content: "☑"; color: green; }
+
+      /* =========================
+        วงล้อ
+        - width: 90vw -> mobile เต็มหน้าจอ
+        - max-width: 400px -> PC จำกัดขนาด
+        - border-radius: 50% -> เป็นวงกลม
+        ========================= */
+      #wheelCanvas {
+        width: 90vw;
+        max-width: 400px;
+        height: auto;
+        border: 5px solid #333;
+        border-radius: 50%;
+        margin-top: 3vh;
+        cursor: default;
+        outline: none;
+      }
+
+      #spinBtn {
+        width: 100%;
+        margin-top: 2vh;
+        padding: 1rem;
+        font-size: 1.5rem; /* แก้ใหญ่/เล็ก -> ตัวหนังสือปุ่มเปลี่ยน */
+        background: #3498db;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      #spinBtn:hover { background: #2980b9; }
+
+      #result, #rewardMsg {
+        margin-top: 2vh;
+        font-size: 1.5rem; /* ถ้าแก้ใหญ่/เล็ก -> ตัวหนังสือผลรางวัล */
+        font-weight: bold;
+        text-align:center;
+      }
+
+      @keyframes pop {
+        0% { transform: scale(0.5); opacity: 0; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); }
+      }
+
+      .reward-effect {
+        animation: pop 0.6s ease-out; /* ถ้าแก้ duration -> animation เร็ว/ช้า */
+        color: #e67e22; /* สี effect */
+      }
+
+      /* =========================
+        Responsive font scaling
+        - @media (max-width:768px) สำหรับมือถือ
+        - font-size, logo, ปุ่ม, radio checkbox ปรับตามหน้าจอ
+        - ถ้าแก้ค่า -> mobile จะเล็ก/ใหญ่
+        ========================= */
+      @media (max-width: 768px) {
+        html { font-size: 4vw; } /* font scale ตาม width หน้าจอ */
+        .container img { max-width: 20vw; } /* logo ใหญ่ขึ้นบนมือถือ */
+        .container h2 { font-size: 5vw; }
+        label { font-size: 4vw; }
+        #spinBtn, #result, #rewardMsg { font-size: 5vw; }
+        label span::before { font-size: 5vw; margin-right: 2vw; }
+      }
